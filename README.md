@@ -5,4 +5,6 @@ This driver is used for the Digilent I2S2 Pmod for audio sampling and playback. 
 - Serial clock (SCLK) fully toggles once per 8 MCLK periods
 - Left/Right Word Select signal (LRCK) toggles once per 64 SCLK periods. 
 
-These signals allow for a 44.1 KHz audio passthrough. The audio is sampled at a 24 bit resolution per channel.
+These signals allow for a 44.1 KHz audio passthrough. The audio is sampled at a resolution of 24 bits per channel.
+
+
