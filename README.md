@@ -7,4 +7,8 @@ This driver is used for the Digilent I2S2 Pmod for audio sampling and playback. 
 
 These signals allow for a 44.1 KHz audio passthrough. The audio is sampled at a resolution of 24 bits per channel.
 
+Using a next state/current state FSM, here are the states used in the I2S2 module:
 
+- `HALT` : 
+- `WAIT_ONE` :
+- `READ` : 
