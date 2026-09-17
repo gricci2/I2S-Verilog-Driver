@@ -9,6 +9,6 @@ These signals allow for a 44.1 KHz audio passthrough. The audio is sampled at a 
 
 Using a next state/current state FSM, here are the states used in the I2S2 module:
 
-- `HALT` : 
-- `WAIT_ONE` :
-- `READ` : 
+- `HALT` : will enter this state at startup or whenever `i2s_reset` is high or `mmcm_lock` (MMCM clock lock) is low. This state sets `next_state` to `WAIT_ONE` as long as the MMCM clock is locked and reset is not high
+- `WAIT_ONE` : this state is entered whenever there is a `lrck_change` or after a `HALT` and waits one full period (according to the I2S protocol) before transitioning to `READ`
+- `READ` : starts reading data at the first SCLK falling edge after a `WAIT_ONE` transition. Will shift bits until `shift_count` is 24 (resolution size) and sets `msample_valid` high upon completion. `msample_channel` is also set to the `i2s_lrck` value to determine which audio channel is being sampled (left/right)
