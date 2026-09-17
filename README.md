@@ -14,3 +14,5 @@ Using a next state/current state FSM, here are the states used in the I2S2 modul
 - `READ` : starts reading data at the first SCLK falling edge after a `WAIT_ONE` transition. Will shift bits until `shift_count` is 24 (resolution size) and sets `msample_valid` high upon completion. `msample_channel` is also set to the `i2s_lrck` value to determine which audio channel is being sampled (left/right)
 
 This module also uses AXI signals `msample_valid` and `sready` to handshake with a receiving module. `msample_valid` is set to high once the 24 bit shift register is done sampling. It remains high until the input signal `sready` goes high, indicating that the receiving module has read the data. A high `msample_valid` signal cannot be reset on the capture edge of the 24th bit to ensure that the valid signal will always be high while a complete audio sample is ready to be read.
+
+Note: testing was done on a Digilent Arty S7-25. An ILA module is also included along with the clock wizard where the 100 MHz clock was used to create the 22.579 MHz MCLK
